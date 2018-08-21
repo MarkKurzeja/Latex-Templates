@@ -1,0 +1,7 @@
+
+*.aux
+*.log
+*.gz
+*.out
+*.toc
+*.gz(busy)

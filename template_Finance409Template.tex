@@ -1,0 +1,77 @@
+\documentclass[11pt,letterpaper,notitlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{classicthesis}
+% Basic Title Information
+
+%\title{\textsc{Title}}
+%\author{\textsc{Mark Kurzeja}}
+%\date{\textsc{\today}}
+
+%Math Packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+\usepackage{mathtools} % For substack and mathclap (underbrace helper commands)
+
+% Typography enhancements
+\usepackage[oldstylenums]{kpfonts}
+\usepackage{microtype
+\usepackage{booktabs} % Pretty \begin{tabular}
+\usepackage{multicol} % For pretty multi-columns enviroments
+\usepackage{xspace}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float} % For the purpose of adding \begin{figure} [H]
+
+% Description Enviroment Item Helper Commands
+\newcommand{\im}[1]{\item[#1] \xspace}
+\newcommand{\imp}[1]{\item[(#1)] \xspace}
+
+% Auto-commas for long nominal and dollar amounts
+\RequirePackage{siunitx}
+\newcommand{\commasep}[1]{\num[group-separator={,}]{#1}}
+\newcommand{\money}[1]{\$\commasep{#1}}
+
+% For standard question headers
+\newcommand{\question}[1]{\section*{Question \textsc{#1}}
+
+% For quick graphics insert -- Full Line --
+\newcommand{\qpic}[2]{
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{./#1}
+\caption{#2}
+\label{fig:#1}
+\end{figure}
+}
+
+% For quick graphics insert -- Normal Size --
+\newcommand{\qpics}[2]{
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{./#1}
+\caption{#2}
+\label{fig:#1}
+\end{figure}
+}
+
+
+
+\begin{document}
+\pagestyle{plain}
+\title{\rmfamily\normalfont\spacedallcaps{the title}}
+\author{\spacedlowsmallcaps{tyler durden}}
+\date{} % no date
+
+\maketitle
+
+
+
+% bib stuff
+    \nocite{*}
+    \addtocontents{toc}{\protect\vspace{\beforebibskip}}
+    \addcontentsline{toc}{section}{\refname}    
+    \bibliographystyle{plain}
+    \bibliography{../Bibliography}
+\end{document}

@@ -1,0 +1,120 @@
+% ==============================================================================
+% Purpose: Create three column dense info sheets for the presentation 
+% of concise information or to quickly condense a topic or a class into 
+% a handout
+% ==============================================================================
+
+\documentclass[landscape]{article}
+%opening
+\title{}
+\author{}
+\usepackage{multicol}
+% Control the geometry of the page with 1/2 inch margins
+\usepackage[width = 10.5in, height = 8in]{geometry}
+\usepackage{kpfonts}
+\usepackage{xspace}
+\usepackage{nicefrac}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{todonotes}
+\usepackage{amssymb}
+\usepackage{siunitx} % For the num operator in producing scientific notation
+\usepackage{multicol}
+
+% For collapsing the lists to a single condensed itemized list
+\usepackage{enumitem}
+\setlist{nosep} % or \setlist{noitemsep} to leave space around whole list
+
+% ==============================================================================
+% Commands Declaration
+% ==============================================================================
+
+% A simple figure environment for inserting a picture into the column
+% Arguments:
+% 1: Name of the picture file
+% 2: Caption for the picture
+\newcommand{\qpics}[2]{
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{./#1}
+\label{fig:#1}
+\end{figure}
+}
+
+% Command for creating a very specific spaced hrule that wont interfere with the 
+% text around it
+\newcommand{\myline}{\vspace{4pt}\hrule  \vspace{4pt}}
+
+% Command for breaking the current line of thought into a new column, and placing
+% a new line above the next column
+\newcommand{\mynewcolumn}{\columnbreak \myline}
+
+% Home-made inline bullet points for compact lists
+\newcommand{\mydot}{\ensuremath{\bullet}\xspace} %\ensuremath{\cdot}\xspace}
+
+% Command that adds a space after the use of an item command in a description 
+% environment
+% Description Environment Item Helper Commands
+\newcommand{\im}[1]{\item[#1] \xspace}
+\newcommand{\imp}[1]{\item[(#1)] \xspace}
+
+% Auto-commas for long nominal and dollar amounts
+\RequirePackage{siunitx}
+\newcommand{\commasep}[1]{\num[group-separator={,}]{#1}}
+\newcommand{\money}[1]{\$\commasep{#1}}
+
+% ==============================================================================
+% The main topic command which is the workhorse of this document
+% Command that allows one to generate topics quickly
+% Arguments:
+% 1: Header for this particular topic
+% 2: Body of the topic
+% ==============================================================================
+\newcommand{\topic}[2]{
+\noindent \textbf{\textsc{#1}}
+
+\noindent #2
+
+\myline
+}
+
+% A method for clearing out a topic command without commenting it out
+\newcommand{\ctopic}[2]{} 
+
+% ==============================================================================
+% How to use this document:
+% Use \mynewcolumn to start a new column
+% Use \topic to start another mini topic -> main command
+% Use \ctopic to clear a topic from existence without commenting it
+% Use \mydot to get a bullet figure for quicklists (lists for which you don't 
+%      have a line break)
+% Use \myline to get an hrule in a place that you wish
+% ==============================================================================
+
+\begin{document}
+\scriptsize
+
+% Begin the multicols environment
+\begin{multicols*}{3}
+
+% Making the Title
+\myline
+\vspace{-0.15cm}
+\begin{center}
+\LARGE \textsc{Title} 
+\end{center}
+\myline 
+
+% This is a sample use
+\topic{Basic Probability Rules}{
+Basic Definition for Conditional Probability:
+\begin{equation}
+P(E|F) = \frac{P(EF)}{P(F)}
+\end{equation}
+}
+
+
+\end{multicols*}
+\end{document}

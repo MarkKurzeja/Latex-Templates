@@ -1,0 +1,34 @@
+\title{title}\documentclass[]{article}
+%opening
+\title{}
+\author{}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{kpfonts}
+\usepackage{nicefrac}
+\usepackage[width = 3.5in]{geometry}
+
+% Zoom to 217 %
+
+\newenvironment{mymath}{
+\Large
+\begin{equation*}
+}{
+\end{equation*}
+\normalsize
+}
+
+\newcommand{\textafter}[1]{\quad \text{#1}}
+
+\begin{document}
+
+\begin{center}
+\textsc{Title}
+\end{center}
+
+\begin{mymath}
+\rho(z,p) = \frac{1}{1 + e^{\left( \frac{1}{z} + \frac{1}{z-1}\right) p}}
+\end{mymath}
+
+\end{document}
