@@ -1,66 +1,76 @@
-\documentclass[10pt,letterpaper]{report}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{xspace}
-\usepackage{lmodern}
-\usepackage{geometry}
-\usepackage{nicefrac}
-\usepackage{multicol}
-\usepackage{microtype}
-\usepackage{booktabs}
-\usepackage[
-%Bjornstrup
-Lenny
-]{fncychap}
-
-%\usepackage{tgschola}
-%\usepackage{tgpagella}
-%\usepackage{fouriernc}
-\usepackage[oldstylenums]{kpfonts}
-
-%%%%%
-
-\title{Critical Notes and Review}
-\author{Mark Kurzeja}
-
-
-\makeatletter
-\renewcommand{\@chapapp}{Article}
-\makeatother
-
-%%%%%
-\newcommand{\artical}[1]{\chapter{\textsc{#1}}}
-\newcommand{\notepage}[3]{
-\section*{\textsc{#1}: #2}
-\begin{description}
-#3
-\end{description}
-}
-
-\newcommand{\point}[1]{\item[\textsf{#1}]\xspace}
-
-\newcommand{\quicklist}[1]{
-\begin{itemize}
-#1
-\end{itemize}
-}
-\newcommand{\quicknumbers}[1]{
-\begin{enumerate}
-#1
-\end{enumerate}
-}
-
-\newcommand{\booktabs}[1]{\begin{center}
-\begin{tabular}
-#1
-\end{tabular}
-\end{center}}
-
-\newcommand{\comment}[1]{\item \textit{#1}}
-
-\newcommand{\ra}{\ensuremath{\Rightarrow}\xspace}
-%%%%%
-\begin{document}
+\documentclass[10pt,letterpaper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{xspace}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{nicefrac}
+\usepackage{multicol}
+\usepackage{microtype}
+\usepackage{booktabs}
+
+\usepackage[
+	%Bjornstrup
+	Lenny
+]{fncychap}
+
+%\usepackage{tgschola}
+%\usepackage{tgpagella}
+%\usepackage{fouriernc}
+\usepackage[oldstylenums]{kpfonts}
+
+%%%%%
+
+\title{Critical Notes and Review}
+\author{Mark Kurzeja}
+\makeatletter
+\renewcommand{\@chapapp}{Article}
+\makeatother
+
+%%%%%
+\newcommand{\artical}[1]{\chapter{\textsc{#1}}}
+
+\newcommand{\notepage}[3]{
+	\section*{\textsc{#1}: #2}
+	\begin{description}	
+		#3
+	\end{description}
+}
+
+\newcommand{\point}[1]{\item[\textsf{#1}]\xspace}
+
+\newcommand{\quicklist}[1]{
+	\begin{itemize}
+		#1
+	\end{itemize}
+}
+
+\newcommand{\quicknumbers}[1]{
+	\begin{enumerate}
+		#1
+	\end{enumerate}
+}
+
+\newcommand{\booktabs}[1]{
+	\begin{center}
+		\begin{tabular}
+			#1
+		\end{tabular}
+	\end{center}
+}
+
+\newcommand{\comment}[1]{\item \textit{#1}}
+
+\newcommand{\ra}{\ensuremath{\Rightarrow}\xspace}
+
+%%%%%
+
+\begin{document}
+
 \maketitle
+\chapter{My First Chapter}
+\section{My First Section}
+
+\end{document}
