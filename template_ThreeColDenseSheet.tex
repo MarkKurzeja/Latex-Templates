@@ -1,13 +1,28 @@
-% ==============================================================================
-% Purpose: Create three column dense info sheets for the presentation 
-% of concise information or to quickly condense a topic or a class into 
-% a handout
-% ==============================================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                              %
+% Purpose:       Dense Three Column Summary                                    %
+%                                                                              %
+% Author:        Mark Kurzeja                                                  %
+% Contact:       mtkurzej@umich.edu                                            %
+% Client:        Mark Kurzeja                                                  %
+%                                                                              %
+% Code creation: 2015-10-10                                                    %
+%                                                                              %
+% Comment:       Create three column dense info sheets for the presentation o  %
+%                f concise information or to quickly condense a topic or a     %
+%                class into a handout                                          %
+%                                                                              %
+% License:       MIT Open Source License                                       %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[landscape]{article}
-%opening
+
+% Opening
 \title{}
 \author{}
+
+% Packages
 \usepackage{multicol}
 % Control the geometry of the page with 1/2 inch margins
 \usepackage[width = 10.5in, height = 8in]{geometry}
@@ -15,32 +30,89 @@
 \usepackage{xspace}
 \usepackage{nicefrac}
 \usepackage{amsmath}
+\usepackage{lipsum}
 \usepackage{amsfonts}
 \usepackage{graphicx}
+\usepackage{wasysym} % Fullmoon
 \usepackage{float}
 \usepackage{todonotes}
+\usepackage{booktabs}
 \usepackage{amssymb}
+\usepackage{makecell} % for \makecell{.... \\ .....} for multiline cells
+\usepackage{changepage}   % for the adjustwidth environmen
 \usepackage{siunitx} % For the num operator in producing scientific notation
 \usepackage{multicol}
+
+
+% ==============================================================================
+% Listings Declaration
+% ==============================================================================
+
+\usepackage{listings} 
+%\lstset{language=R} 
+\usepackage{color}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+	backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+	basicstyle=\scriptsize,        % the size of the fonts that are used for the code
+	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                 % sets automatic line breaking
+	captionpos=b,                    % sets the caption-position to bottom
+	commentstyle=\color{mygreen},    % comment style
+	deletekeywords={...},            % if you want to delete keywords from the given language
+	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	frame=single,	                   % adds a frame around the code
+	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{blue},       % keyword style
+	language=R,                 % the language of the code
+	otherkeywords={*,...},            % if you want to add more keywords to the set
+	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=5pt,                   % how far the line-numbers are from the code
+	numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+	rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,          % underline spaces within strings only
+	showtabs=false,                  % show tabs within strings adding particular underscores
+	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{mymauve},     % string literal style
+	tabsize=2,	                   % sets default tabsize to 2 spaces
+	title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+% ==============================================================================
+% Commands Declaration
+% ==============================================================================
 
 % For collapsing the lists to a single condensed itemized list
 \usepackage{enumitem}
 \setlist{nosep} % or \setlist{noitemsep} to leave space around whole list
 
-% ==============================================================================
-% Commands Declaration
-% ==============================================================================
+% Specific functions that remove the issues with the spacing around an align enviroment
+\usepackage{etoolbox}
+\newcommand{\zerodisplayskips}{
+	\setlength{\abovedisplayskip}{2pt}
+	\setlength{\belowdisplayskip}{2pt}
+	\setlength{\abovedisplayshortskip}{2pt}
+	\setlength{\belowdisplayshortskip}{2pt}
+}
+\appto{\normalsize}{\zerodisplayskips}
+\appto{\small}{\zerodisplayskips}
+\appto{\footnotesize}{\zerodisplayskips}
 
 % A simple figure environment for inserting a picture into the column
 % Arguments:
 % 1: Name of the picture file
 % 2: Caption for the picture
 \newcommand{\qpics}[2]{
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.6\linewidth]{./#1}
-\label{fig:#1}
-\end{figure}
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{./#1}
+	\label{fig:#1}
+	\end{figure}
 }
 
 % Command for creating a very specific spaced hrule that wont interfere with the 
@@ -54,6 +126,9 @@
 % Home-made inline bullet points for compact lists
 \newcommand{\mydot}{\ensuremath{\bullet}\xspace} %\ensuremath{\cdot}\xspace}
 
+% Command for inserting a legal blob!
+\newcommand{\legalblob}{\ensuremath{ \left[ \newmoon \right] } \xspace}
+
 % Command that adds a space after the use of an item command in a description 
 % environment
 % Description Environment Item Helper Commands
@@ -65,6 +140,9 @@
 \newcommand{\commasep}[1]{\num[group-separator={,}]{#1}}
 \newcommand{\money}[1]{\$\commasep{#1}}
 
+% For mathematical expectations enclosure
+\newcommand{\expt}[1]{\ensuremath{\mathbb{E}\left[ #1\right] }\xspace}
+
 % ==============================================================================
 % The main topic command which is the workhorse of this document
 % Command that allows one to generate topics quickly
@@ -72,12 +150,19 @@
 % 1: Header for this particular topic
 % 2: Body of the topic
 % ==============================================================================
+
+\definecolor{harvardcrimson}{HTML}{A41034} % For the main headings
+\definecolor{harvardblue}{HTML}{0D667F} % For the sub headings
+%\definecolor{brewerred}{HTML}{E41A1C}
+%\definecolor{brewerblue}{HTML}{377EB8}
+%\definecolor{brewergreen}{HTML}{4DAF4A}
+%\definecolor{harvardgrey}{HTML}{B6B6B6}
+%\definecolor{harvarddarkgrey}{HTML}{808285}
+
 \newcommand{\topic}[2]{
-\noindent \textbf{\textsc{#1}}
-
-\noindent #2
-
-\myline
+	\noindent \textbf{\textsc{\color{harvardcrimson}{#1}}}
+	\noindent \hspace{-3.5pt} #2 
+	\myline
 }
 
 % A method for clearing out a topic command without commenting it out
@@ -93,28 +178,116 @@
 % Use \myline to get an hrule in a place that you wish
 % ==============================================================================
 
-\begin{document}
-\scriptsize
-
-% Begin the multicols environment
-\begin{multicols*}{3}
-
-% Making the Title
-\myline
-\vspace{-0.15cm}
-\begin{center}
-\LARGE \textsc{Title} 
-\end{center}
-\myline 
-
-% This is a sample use
-\topic{Basic Probability Rules}{
-Basic Definition for Conditional Probability:
-\begin{equation}
-P(E|F) = \frac{P(EF)}{P(F)}
-\end{equation}
+% For creating super neat indented sub paragraphs
+\newenvironment{tellme}[1]{
+	\noindent \textbf{\textit{\color{harvardblue}{#1}}}
+	\begin{adjustwidth}{9pt}{}
+}{
+	\end{adjustwidth}
 }
 
+% For creating item enviroments that are flush left with the margin
+\newenvironment{compactitem}{
+	\begin{itemize}[leftmargin=*,labelsep=5pt]
+}{
+	\end{itemize}
+}
+% For creating enumeration enviroments that are flush left with the margin
+\newenvironment{compactenum}{
+	\begin{enumerate}[leftmargin=*,labelsep=5pt]
+}{
+	\end{enumerate}
+}
+
+% For creating description enviroments that have a smaller margin
+\newenvironment{compactdesc}{
+	\begin{description}[leftmargin=*,labelsep=10pt]
+}{
+	\end{description}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                              %
+%                                Begin Document                                %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+	\footnotesize
+
+	% Begin the multicols environment
+	\begin{multicols*}{3}
+
+	% Making the Title
+	\myline
+	\vspace{-0.2cm}
+	\begin{center}
+		\LARGE \textsc{\legalblob} 
+	\end{center}
+	\vspace{-0.2cm}
+	\myline 
+	
+	% Template for a new topic
+	\topic{A New Topic}{ 
+		Some Short words about my new topic
+		
+		\begin{tellme}{This is the first tell me block}
+			Some text to tell me
+			\begin{compactitem}
+				\item Some items
+				\item Another Item
+			\end{compactitem}
+			\begin{compactenum}
+				\item First number
+				\item Second Number
+			\end{compactenum}
+			\begin{compactdesc}
+				\item[Topic one] Some text about topic one
+				\item[Topic two] Some other text about topic two
+			\end{compactdesc}
+		\end{tellme}
+	}
+	
+	% Example Usage
+	\topic{Difference in Population Means}{
+		This test compares the means of two independent populations. We say 
+		that this is a ``difference in population means'' and not a 
+		``population mean difference''. When you notice that you are 
+		comparing two population means and the subgroups have a different 
+		size, this is a good indication that you will be using this test and 
+		not a paired test. However, this doesn't imply that if the sample 
+		sizes are the same that it is automatically a paired test. Make sure 
+		to do lots of name-that-scenario to get a good understanding of this 
+		distinction.
+			
+			\begin{tellme}{Do we use pooled or unpooled variance?}
+				\begin{compactitem}
+					\item  Population variances equal $\implies$ pooled
+					\item  Population variances unequal $\implies$ unpooled
+					\item  There are three ways of checking equality in variance:
+				\end{compactitem}
+				\begin{compactenum}
+					\item Side-by-Side boxplots
+					\begin{compactitem}
+						\item Are IQRs of the sample data similar?
+						\item Remember, boxes don't need to line up, but lengths of boxes should be similar (within two times the size of each other)
+					\end{compactitem}
+					\item Check on Sample Standard Deviations
+					\begin{compactitem}
+						\item Assumption is valid if sample std. deviations are similar. Each standard deviation is no more than 2x the other. 
+					\end{compactitem}
+					\item \textbf{Levene's test} for homogeneity of variances
+					\begin{compactitem}
+						\item Hypothesis test of equal variances. Use $\boldsymbol{\alpha=0.10}$
+						\item $H_0:\sigma_1^2=\sigma_2^2\text{ v. }H_a:\sigma_1^2\neq\sigma_2^2$
+						\item Reject $H_0\implies$ not reasonable to assume equal variances. You must run an unpooled test (Welch's)
+						\item Fail to reject $\implies$ reasonable to assume equal variances. You can run a pooled test
+					\end{compactitem}
+				\end{compactenum}
+			\end{tellme}
+		}
+		
 
 \end{multicols*}
 \end{document}
