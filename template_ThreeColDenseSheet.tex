@@ -26,7 +26,6 @@
 \usepackage{multicol}
 % Control the geometry of the page with 1/2 inch margins
 \usepackage[width = 10.5in, height = 8in]{geometry}
-\usepackage{kpfonts}
 \usepackage{xspace}
 \usepackage{nicefrac}
 \usepackage{amsmath}
@@ -43,6 +42,11 @@
 \usepackage{siunitx} % For the num operator in producing scientific notation
 \usepackage{multicol}
 
+% Fonts selection
+%\usepackage[]{kpfonts}
+\usepackage[regular, default]{sourcesanspro} % Very close to Myriad - favorite sans serif % option light,scale
+%\usepackage{libertine}
+\renewcommand{\familydefault}{\sfdefault}
 
 % ==============================================================================
 % Listings Declaration
@@ -109,9 +113,9 @@
 % 2: Caption for the picture
 \newcommand{\qpics}[2]{
 	\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\linewidth]{./#1}
-	\label{fig:#1}
+		\centering
+		\includegraphics[width=0.6\linewidth]{./#1}
+		\label{fig:#1}
 	\end{figure}
 }
 
@@ -159,15 +163,6 @@
 %\definecolor{harvardgrey}{HTML}{B6B6B6}
 %\definecolor{harvarddarkgrey}{HTML}{808285}
 
-\newcommand{\topic}[2]{
-	\noindent \textbf{\textsc{\color{harvardcrimson}{#1}}}
-	\noindent \hspace{-3.5pt} #2 
-	\myline
-}
-
-% A method for clearing out a topic command without commenting it out
-\newcommand{\ctopic}[2]{} 
-
 % ==============================================================================
 % How to use this document:
 % Use \mynewcolumn to start a new column
@@ -178,31 +173,44 @@
 % Use \myline to get an hrule in a place that you wish
 % ==============================================================================
 
+% Main command for creating a topic which is the main unit of parsing 
+\newenvironment{topic}[1]{
+	\noindent \textbf{\textsc{\color{harvardcrimson}{#1}}}
+	\noindent \hspace{-3.5pt}
+}{
+	\myline
+}
+
+% A method for clearing out a topic command without commenting it out
+\newenvironment{ctopic}[1]{
+}{
+}
+
 % For creating super neat indented sub paragraphs
 \newenvironment{tellme}[1]{
 	\noindent \textbf{\textit{\color{harvardblue}{#1}}}
 	\begin{adjustwidth}{9pt}{}
-}{
+	}{
 	\end{adjustwidth}
 }
 
 % For creating item enviroments that are flush left with the margin
 \newenvironment{compactitem}{
 	\begin{itemize}[leftmargin=*,labelsep=5pt]
-}{
+	}{
 	\end{itemize}
 }
 % For creating enumeration enviroments that are flush left with the margin
 \newenvironment{compactenum}{
 	\begin{enumerate}[leftmargin=*,labelsep=5pt]
-}{
+	}{
 	\end{enumerate}
 }
 
 % For creating description enviroments that have a smaller margin
 \newenvironment{compactdesc}{
 	\begin{description}[leftmargin=*,labelsep=10pt]
-}{
+	}{
 	\end{description}
 }
 
