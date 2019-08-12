@@ -8,9 +8,10 @@
 %                                                                              %
 % Code creation: 2015-10-10                                                    %
 %                                                                              %
-% Comment:       Create three column dense info sheets for the presentation o  %
-%                f concise information or to quickly condense a topic or a     %
-%                class into a handout                                          %
+% Comment:       Create three column dense info sheets for the presentation    %
+%                of concise information, or to quickly condense a topic or a   %
+%                class into a handout. They are excellent for short            % 
+%                presentations or preparing for an in-person conversation.     %
 %                                                                              %
 % License:       MIT Open Source License                                       %
 %                                                                              %
@@ -32,30 +33,31 @@
 \usepackage{lipsum}
 \usepackage{amsfonts}
 \usepackage{graphicx}
-\usepackage{wasysym} % Fullmoon
+\usepackage{wasysym}    % Fullmoon
 \usepackage{float}
 \usepackage{todonotes}
 \usepackage{booktabs}
 \usepackage{amssymb}
-\usepackage{makecell} % for \makecell{.... \\ .....} for multiline cells
-\usepackage{changepage}   % for the adjustwidth environmen
-\usepackage{siunitx} % For the num operator in producing scientific notation
+\usepackage{makecell}   % for \makecell{.... \\ .....} for multiline cells
+\usepackage{changepage} % for the adjustwidth environment
+\usepackage{siunitx}    % For the num operator in producing scientific notation
 \usepackage{multicol}
 
 % Fonts selection
-%\usepackage[]{kpfonts}
-%\usepackage[regular, default]{sourcesanspro} % Very close to Myriad - favorite sans serif % option light,scale
-%\usepackage{alegreya}
-%\usepackage[sfdefault]{universalis}
-%\usepackage{ebgaramond}
-%\usepackage{accanthis}
-%\usepackage{libertine}
-%\renewcommand{\familydefault}{\sfdefault}
+\usepackage[osf]{kpfonts} % kpfonts is the default due to readability
+% \usepackage{ebgaramond}
+% \usepackage[regular, default]{sourcesanspro} % Very close to Myriad - favorite sans serif % option light,scale
+% \usepackage{alegreya}
+% \usepackage[sfdefault]{universalis}
+% \usepackage{accanthis}
+% \usepackage{libertine}
+% \renewcommand{\familydefault}{\sfdefault}
+
 % Use the following for the baskerville fonts ----
-\usepackage{lmodern} % monospace font
-\usepackage[scale=0.89]{tgheros} % Helvetica is too big
-\usepackage[osf]{Baskervaldx} % tosf in text, tlf in math
-\usepackage[baskervaldx,cmintegrals,bigdelims,vvarbb]{newtxmath} % math italic letters from Baskervaldx
+% \usepackage{lmodern} % monospace font
+% \usepackage[scale=0.89]{tgheros} % Helvetica is too big
+% \usepackage[osf]{Baskervaldx} % tosf in text, tlf in math
+% \usepackage[baskervaldx,cmintegrals,bigdelims,vvarbb]{newtxmath} % math italic letters from Baskervaldx
 % ------------------------------------------------
 
 % ==============================================================================
@@ -71,7 +73,7 @@
 
 \lstset{ %
 	backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
-	basicstyle=\scriptsize,        % the size of the fonts that are used for the code
+	basicstyle=\scriptsize,          % the size of the fonts that are used for the code
 	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
 	breaklines=true,                 % sets automatic line breaking
 	captionpos=b,                    % sets the caption-position to bottom
@@ -82,8 +84,8 @@
 	frame=single,	                   % adds a frame around the code
 	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
 	keywordstyle=\color{blue},       % keyword style
-	language=R,                 % the language of the code
-	otherkeywords={*,...},            % if you want to add more keywords to the set
+	language=R,                      % the language of the code
+	otherkeywords={*,...},           % if you want to add more keywords to the set
 	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
 	numbersep=5pt,                   % how far the line-numbers are from the code
 	numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
@@ -93,7 +95,7 @@
 	showtabs=false,                  % show tabs within strings adding particular underscores
 	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
 	stringstyle=\color{mymauve},     % string literal style
-	tabsize=2,	                   % sets default tabsize to 2 spaces
+	tabsize=2,	                     % sets default tabsize to 2 spaces
 	title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
 
@@ -105,7 +107,7 @@
 \usepackage{enumitem}
 \setlist{nosep} % or \setlist{noitemsep} to leave space around whole list
 
-% Specific functions that remove the issues with the spacing around an align enviroment
+% Specific functions that remove the issues with the spacing around an align environment
 \usepackage{etoolbox}
 \newcommand{\zerodisplayskips}{
 	\setlength{\abovedisplayskip}{2pt}
@@ -129,12 +131,12 @@
 	\end{figure}
 }
 
-% Command for creating a very specific spaced hrule that wont interfere with the 
-% text around it
+% Command for creating a very specific spaced hrule that wont interfere with
+% the text around it
 \newcommand{\myline}{\vspace{4pt}\hrule  \vspace{4pt}}
 
-% Command for breaking the current line of thought into a new column, and placing
-% a new line above the next column
+% Command for breaking the current line of thought into a new column, and
+% placing a new line above the next column
 \newcommand{\mynewcolumn}{\columnbreak \myline}
 
 % Home-made inline bullet points for compact lists
@@ -143,8 +145,6 @@
 % Command for inserting a legal blob!
 \newcommand{\legalblob}{\ensuremath{ \left[ \newmoon \right] } \xspace}
 
-% Command that adds a space after the use of an item command in a description 
-% environment
 % Description Environment Item Helper Commands
 \newcommand{\im}[1]{\item[#1] \xspace}
 \newcommand{\imp}[1]{\item[(#1)] \xspace}
@@ -157,14 +157,10 @@
 % For mathematical expectations enclosure
 \newcommand{\expt}[1]{\ensuremath{\mathbb{E}\left[ #1\right] }\xspace}
 
-% ==============================================================================
-% The main topic command which is the workhorse of this document
-% Command that allows one to generate topics quickly
-% Arguments:
-% 1: Header for this particular topic
-% 2: Body of the topic
-% ==============================================================================
 
+% ==============================================================================
+% Define the colors that will be used in the topic and tellme envs
+% ==============================================================================
 \definecolor{harvardcrimson}{HTML}{A41034} % For the main headings
 \definecolor{harvardblue}{HTML}{0D667F} % For the sub headings
 %\definecolor{brewerred}{HTML}{E41A1C}
@@ -174,11 +170,18 @@
 %\definecolor{harvarddarkgrey}{HTML}{808285}
 
 % ==============================================================================
+% The main topic command which is the workhorse of this document
+% Command that allows one to generate topics quickly
+% Arguments:
+% 1: Header for this particular topic
+% 2: Body of the topic
+% 
 % How to use this document:
-% Use \mynewcolumn to start a new column
 % Use \topic to start another mini topic -> main command
+% Use \tellme for a subpoint to a topic
+% Use \mynewcolumn to start a new column
 % Use \ctopic to clear a topic from existence without commenting it
-% Use \mydot to get a bullet figure for quicklists (lists for which you don't 
+% Use \mydot to get a bullet figure for quick lists (lists for which you don't 
 %      have a line break)
 % Use \myline to get an hrule in a place that you wish
 % ==============================================================================
@@ -200,27 +203,27 @@
 \newenvironment{tellme}[1]{
 	\noindent \textbf{\textit{\color{harvardblue}{#1}}}
 	\begin{adjustwidth}{9pt}{}
-	}{
+}{
 	\end{adjustwidth}
 }
 
-% For creating item enviroments that are flush left with the margin
+% For creating item environments that are flush left with the margin
 \newenvironment{compactitem}{
 	\begin{itemize}[leftmargin=*,labelsep=5pt]
-	}{
+}{
 	\end{itemize}
 }
-% For creating enumeration enviroments that are flush left with the margin
+% For creating enumeration environments that are flush left with the margin
 \newenvironment{compactenum}{
 	\begin{enumerate}[leftmargin=*,labelsep=5pt]
-	}{
+}{
 	\end{enumerate}
 }
 
-% For creating description enviroments that have a smaller margin
+% For creating description environments that have a smaller margin
 \newenvironment{compactdesc}{
 	\begin{description}[leftmargin=1em,labelsep=0.7em, font=\normalfont\itshape]
-	}{
+}{
 	\end{description}
 }
 
@@ -236,43 +239,50 @@
 
 	% Begin the multicols environment
 	\begin{multicols*}{3}
+
 	% Make the title align with the rest of the columns
 	\hfill
-	\vspace{-1\baselineskip}
+		\vspace{-1\baselineskip}
 	\hfill
 	
 	% Making the Title
 	\myline
-	\vspace{-0.2cm}
-	\begin{center}
-		\LARGE \textsc{\legalblob} 
-	\end{center}
-	\vspace{-0.2cm}
+		\vspace{-0.2cm}
+		\begin{center}
+			\LARGE \textsc{\legalblob} 
+		\end{center}
+		\vspace{-0.2cm}
 	\myline 
 	
 	% Template for a new topic
+	% A topic comprises a large point
 	\begin{topic}{A New Topic} 
-		Some Short words about my new topic
-		
+		Some short words about my new topic
+
+		% A tellme block comprises a sub-point of a topic
 		\begin{tellme}{This is the first tell me block}
 			Some text to tell me
+			% Compact items are bullet lists with minimal spacing
+
 			\begin{compactitem}
 				\item Some items
 				\item Another Item
 			\end{compactitem}
+
+			% Compact enums are numbered lists with minimal spacing
 			\begin{compactenum}
 				\item First number
 				\item Second Number
 			\end{compactenum}
+
+			% Compact descriptions are definition lists with minimal spacing
 			\begin{compactdesc}
 				\item[Topic one] Some text about topic one
 				\item[Topic two] Some other text about topic two
 			\end{compactdesc}
+
 		\end{tellme}
 	\end{topic}
-	
-
-		
 
 \end{multicols*}
 \end{document}

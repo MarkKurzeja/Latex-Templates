@@ -1,7 +1,7 @@
 % =====================================
-% Purpose: Create a Robert Bringhurst style thesis paper using the 
-% classicthesis package and some custom enhancements - this is 
-% the default template for most of my documents
+% Purpose: Create a Robert Bringhurst style thesis paper using the %
+% classicthesis package and some custom enhancements - this is % the default
+% template for most of my documents
 % =====================================
 
 % =====================================
@@ -19,37 +19,63 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{nicefrac} % For typsetting inline fractions
+\usepackage{nicefrac}  % For typsetting inline fractions
 \usepackage{mathtools} % For substack and mathclap (underbrace helper commands)
 
 %% Typography enhancements
 \usepackage{microtype} % For awesome typographical improvements
-\usepackage{booktabs} % Pretty \begin{tabular}
-\usepackage{multicol} % For pretty multi-columns enviroments
-\usepackage{xspace} % For use in a command to ensure proper spacing
-%\usepackage{geometry} %uncomment this is you want full page documentation
-\usepackage{graphicx} % for allowing pictures
-\usepackage{float} % For the purpose of adding \begin{figure} [H]
-\usepackage{lipsum} % For adding filler text
+\usepackage{booktabs}  % Pretty \begin{tabular}
+\usepackage{multicol}  % For pretty multi-columns environments
+\usepackage{xspace}    % For use in a command to ensure proper spacing
+%\usepackage{geometry} % Uncomment this is you want full page documentation
+\usepackage{graphicx}  % For allowing pictures
+\usepackage{float}     % For the purpose of adding \begin{figure} [H]
+\usepackage{lipsum}    % For adding filler text
 
 % Font Choices - Some of the fonts in this package are great and are my favorite 
-%http://ctan.math.utah.edu/ctan/tex-archive/fonts/kpfonts/doc/kpfonts.pdf
-%\usepackage[oldstylenums]{kpfonts} % For default font that is excellent and very professional %option light, oldstyle for fun ligatures, largesmallcaps
-%\usepackage[osf, regular, default]{sourcesanspro} % Very close to Myriad - favorite sans serif % option light,scale
-%\usepackage[default,osfigures, scale = 0.95]{opensans} % great sans serif with even color %option scale
-%\usepackage[osf]{libertine} % replacement for times and gorgeous font
-%\usepackage[libertine]{newtxmath}
-%\usepackage[osf]{alegreya} % Playful and professional - a great super family and the sansserif is supberb
-%\usepackage{ebgaramond} % One of the most professional looking fonts, this is a classic
-%\usepackage{libertine} % A no-nonsense font that is great for all around workhorse
+% 1) ebgaramond - Garamond, this is the top choice for fonts for the resume. It
+% is classy, full-proof for professional work, and looks great up close and %
+% afar 
+\usepackage[osf, scale=1.02]{ebgaramond}
+% 2) cochineal - based off of the Crimson fonts, this is almost like Minion,
+% but is a solid workhorse font and has clean lines - use for the most clean
+% appearance 
+% \usepackage[osf]{cochineal}
+% 3) Minion Pro - You have to use XeTex to get this font working (and often
+% have to install it) but this is a workhorse font, and one of the cleanest
+% fonts around. Use it when you d:vsp on't want the font to be noticed 
+% \usepackage{fontspec}
+% \setmainfont[Numbers=OldStyle]{Minion Pro}
+% 4) kpfonts - the Kepler font project, these are based off of Palatino fonts
+% and are wide but very easy to read and fill the page well. Use this if you
+% think that the resume looks too white 
+% http://ctan.math.utah.edu/ctan/tex-archive/fonts/kpfonts/doc/kpfonts.pdf 
+% \usepackage[oldstylenums]{kpfonts}
+
+% Honorable Mentions: 
+% 5) fbb - based off of Bembo, this is a delicate font and a great substitute
+% for when you are sick of garamond but need something professional
+% \usepackage[osf,scale=0.95]{fbb}
+% 6) erewhon - based off of Utopia, this is a no-nonsense font and holds a
+% great modern look while being very stark 
+% \usepackage[osf]{erewhon} % Erewhon font based on utopia
+% 7) sourcesanspro - this is the only font that is approved for sans-serif work
+% and it is a great workhorse of a font when legibility is the chief concern
+% \usepackage[default]{sourcesanspro} % Only Approved Sans Serif
+
+% Use of libertine or alegreya for open source fonts
+% \usepackage[osf]{libertine} % replacement for times and gorgeous font
+% \usepackage[libertine]{newtxmath}
+% Playful and professional - a great super family and the sans-serif is superb
+% \usepackage[osf]{alegreya} 
 
 % Use the following for the baskerville fonts ----
 % This, combined with Mrs Eaves, are some of the most gorgeous old school fonts
-% escecially the italic. These two were on all of the menus at Mackinac Island
-\usepackage{lmodern} % monospace font
-\usepackage[scale=0.89]{tgheros} % Helvetica is too big
-\usepackage[osf]{Baskervaldx} % tosf in text, tlf in math
-\usepackage[baskervaldx,cmintegrals,bigdelims,vvarbb]{newtxmath} % math italic letters from Baskervaldx
+% especially the italic. These two were on all of the menus at Mackinac Island
+% \usepackage{lmodern} % monospace font
+% \usepackage[scale=0.89]{tgheros} % Helvetica is too big
+% \usepackage[osf]{Baskervaldx} % tosf in text, tlf in math
+% \usepackage[baskervaldx,cmintegrals,bigdelims,vvarbb]{newtxmath} % math italic letters from Baskervaldx
 % ------------------------------------------------
 
 % Run this if you are using a sans-serif font
@@ -64,22 +90,22 @@
 
 % For quick graphics insert -- Full Line --
 \newcommand{\qpic}[2]{
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\linewidth]{./#1}
-\caption{#2}
-\label{fig:#1}
-\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\linewidth]{./#1}
+		\caption{#2}
+		\label{fig:#1}
+	\end{figure}
 }
 
 % For quick graphics insert -- Normal Size --
 \newcommand{\qpics}[2]{
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.7\linewidth]{./#1}
-\caption{#2}
-\label{fig:#1}
-\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{./#1}
+		\caption{#2}
+		\label{fig:#1}
+	\end{figure}
 }
 
 % =====================================
@@ -115,9 +141,9 @@
 \usepackage{listings} % To import code use: \lstinputlisting[language=R]{h1code.r}
 \lstset{language=R} % \lstinputlisting[language={}]{file.txt} for  unformatted code
 \usepackage{color}
-\definecolor{mygreen}{rgb}{0,0.6,0}
-\definecolor{mygray}{rgb}{0.5,0.5,0.5}
-\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{mygreen}{rgb}{0, 0.6, 0}
+\definecolor{mygray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{mymauve}{rgb}{0.58, 0, 0.82}
 
 \lstset{ %
   backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
@@ -132,8 +158,8 @@
   frame=single,	                   % adds a frame around the code
   keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
   keywordstyle=\color{blue},       % keyword style
-  language=R,                 % the language of the code
-  otherkeywords={*,...},            % if you want to add more keywords to the set
+  language=R,                      % the language of the code
+  otherkeywords={*,...},           % if you want to add more keywords to the set
   numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
   numbersep=5pt,                   % how far the line-numbers are from the code
   numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
@@ -143,7 +169,7 @@
   showtabs=false,                  % show tabs within strings adding particular underscores
   stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
   stringstyle=\color{mymauve},     % string literal style
-  tabsize=2,	                   % sets default tabsize to 2 spaces
+  tabsize=2,	                     % sets default tabsize to 2 spaces
   title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
 
