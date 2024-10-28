@@ -107,6 +107,23 @@
 \usepackage{enumitem}
 \setlist{nosep} % or \setlist{noitemsep} to leave space around whole list
 
+% Setup a Lamport-style numbering scheme for proofs
+% lproof is the long-form of the proof numbering system (1.1.2)
+% cproof is the short-form of the proof numbering system (<2>1)
+\newlist{cproof}{enumerate}{4}
+\setlist[cproof,1]{label={$\langle$1$\rangle$\arabic*.}, ref={$\langle$1$\rangle$\arabic*}}
+\setlist[cproof,2]{label={$\langle$2$\rangle$\arabic*.}, ref={$\langle$2$\rangle$\arabic*}}
+\setlist[cproof,3]{label={$\langle$3$\rangle$\arabic*.}, ref={$\langle$3$\rangle$\arabic*}}
+\setlist[cproof,4]{label={$\langle$4$\rangle$\arabic*.}, ref={$\langle$4$\rangle$\arabic*}}
+\setlist[cproof]{listparindent=\parindent, itemsep=1pt, parsep=0pt, left=0pt, topsep=1pt, align=left}
+\newlist{lproof}{enumerate}{4}
+\setlist[lproof]{label*={\arabic*.}, listparindent=\parindent, itemsep=1pt, parsep=0pt, left=0pt, topsep=1pt}
+
+% proofstep is meant to be used in conjunction with lproof or cproof
+\newenvironment{proofstep}{
+\hfill \newline \hspace{-0.2em}\textsc{Proof}:
+}{}
+
 % Specific functions that remove the issues with the spacing around an align environment
 \usepackage{etoolbox}
 \newcommand{\zerodisplayskips}{
