@@ -10,7 +10,7 @@
 
 \documentclass[10pt,a4paper, hidelinks]{article} % KOMA-Script article scrartcl
 \usepackage[nochapters, pdfspacing, drafting]{classicthesis} % nochapters %drafting (puts date/time at bottom) beramono (changed mono spaced font)
-
+\usepackage[T1]{fontenc}
 % =====================================
 % Packages in Use
 % =====================================
@@ -37,10 +37,13 @@
 % is classy, full-proof for professional work, and looks great up close and %
 % afar 
 \usepackage[osf, scale=1.02]{ebgaramond}
+%\usepackage[osf, scale = 1.0]{CormorantGaramond}
+
 % 2) cochineal - based off of the Crimson fonts, this is almost like Minion,
 % but is a solid workhorse font and has clean lines - use for the most clean
 % appearance 
 % \usepackage[osf]{cochineal}
+% \usepackage{coelacanth}
 % 3) Minion Pro - You have to use XeTex to get this font working (and often
 % have to install it) but this is a workhorse font, and one of the cleanest
 % fonts around. Use it when you d:vsp on't want the font to be noticed 
@@ -76,6 +79,22 @@
 % \usepackage[scale=0.89]{tgheros} % Helvetica is too big
 % \usepackage[osf]{Baskervaldx} % tosf in text, tlf in math
 % \usepackage[baskervaldx,cmintegrals,bigdelims,vvarbb]{newtxmath} % math italic letters from Baskervaldx
+
+%\usepackage{XCharter}
+%\usepackage[osf]{libertine}
+%\usepackage[osf]{Alegreya}
+%\usepackage{stix2}
+%\usepackage[osf]{notomath}
+%\usepackage[osf]{noto-serif}
+%\usepackage{imfellEnglish}
+%\usepackage[nf]{coelacanth}
+%\usepackage{CormorantGaramond}
+%\usepackage{CrimsonPro}
+%\usepackage{cochineal}
+
+%  Run the following line to make the default font face sans-serif
+% \renewcommand{\familydefault}{\sfdefault}
+
 % ------------------------------------------------
 
 % Run this if you are using a sans-serif font
@@ -177,6 +196,26 @@
 % Beginning the main document
 % =====================================
 
+\usepackage{enumitem}
+
+% Setup a Lamport-style numbering scheme for proofs
+% lproof is the long-form of the proof numbering system (1.1.2)
+% cproof is the short-form of the proof numbering system (<2>1)
+\newlist{cproof}{enumerate}{4}
+\setlist[cproof,1]{label={$\langle$1$\rangle$\arabic*.}, ref={$\langle$1$\rangle$\arabic*}}
+\setlist[cproof,2]{label={$\langle$2$\rangle$\arabic*.}, ref={$\langle$2$\rangle$\arabic*}}
+\setlist[cproof,3]{label={$\langle$3$\rangle$\arabic*.}, ref={$\langle$3$\rangle$\arabic*}}
+\setlist[cproof,4]{label={$\langle$4$\rangle$\arabic*.}, ref={$\langle$4$\rangle$\arabic*}}
+\setlist[cproof]{listparindent=\parindent, itemsep=1pt, parsep=0pt, left=0pt, topsep=1pt, align=left}
+\newlist{lproof}{enumerate}{4}
+\setlist[lproof]{label*={\arabic*.}, listparindent=\parindent, itemsep=1pt, parsep=0pt, left=0pt, topsep=1pt}
+
+% proofstep is meant to be used in conjunction with lproof or cproof
+\newenvironment{proofstep}{
+\hfill \newline \hspace{-0.2em}\textsc{Proof}:
+}{}
+
+
 \begin{document}
 \pagestyle{plain} 
 \title{\rmfamily\normalfont\spacedallcaps{the title}}
@@ -187,6 +226,28 @@
 
 \begin{abstract}
 \end{abstract}
+
+\begin{cproof}
+    \item Level 1, Index 1
+    \begin{cproof}
+      \item World \label{worldref}
+      \begin{proofstep}
+      ABC The proof follows from \ref{worldref} and $1 + 2 = 4$
+      \end{proofstep}
+      \begin{cproof}
+        \item Taco 
+        \item Nacho 
+      \end{cproof}
+    \end{cproof}
+    \item nacho
+    \begin{cproof}
+      \item Taco
+      \item Nacho
+    \end{cproof}
+    \item burrito
+\end{cproof}
+
+
 
 \tableofcontents
 
