@@ -44,7 +44,7 @@
 \usepackage{multicol}
 
 % Fonts selection
-\usepackage[osf]{kpfonts} % kpfonts is the default due to readability
+%\usepackage[osf]{kpfonts} % kpfonts is the default due to readability
 % \usepackage{ebgaramond}
 % \usepackage[regular, default]{sourcesanspro} % Very close to Myriad - favorite sans serif % option light,scale
 % \usepackage{alegreya}
@@ -52,6 +52,7 @@
 % \usepackage{accanthis}
 % \usepackage{libertine}
 % \renewcommand{\familydefault}{\sfdefault}
+\usepackage{XCharter}
 
 % Use the following for the baskerville fonts ----
 % \usepackage{lmodern} % monospace font
@@ -115,9 +116,9 @@
 \setlist[cproof,2]{label={$\langle$2$\rangle$\arabic*.}, ref={$\langle$2$\rangle$\arabic*}}
 \setlist[cproof,3]{label={$\langle$3$\rangle$\arabic*.}, ref={$\langle$3$\rangle$\arabic*}}
 \setlist[cproof,4]{label={$\langle$4$\rangle$\arabic*.}, ref={$\langle$4$\rangle$\arabic*}}
-\setlist[cproof]{listparindent=\parindent, itemsep=1pt, parsep=0pt, left=0pt, topsep=1pt, align=left}
+\setlist[cproof]{leftmargin=*, labelsep=5pt, itemindent=12pt}
 \newlist{lproof}{enumerate}{4}
-\setlist[lproof]{label*={\arabic*.}, listparindent=\parindent, itemsep=1pt, parsep=0pt, left=0pt, topsep=1pt}
+\setlist[lproof]{label*={\arabic*.}, leftmargin=*, itemindent=5pt}
 
 % proofstep is meant to be used in conjunction with lproof or cproof
 \newenvironment{proofstep}{
@@ -297,6 +298,22 @@
 				\item[Topic one] Some text about topic one
 				\item[Topic two] Some other text about topic two
 			\end{compactdesc}
+      
+      \begin{cproof}
+        \item Taco
+        \item Nacho
+        \begin{cproof}
+          \item burrito
+        \end{cproof}
+      \end{cproof}
+      
+      \begin{lproof}
+        \item Taco
+        \item Nacho
+        \begin{lproof}
+          \item burrito
+        \end{lproof}
+      \end{lproof}
 
 		\end{tellme}
 	\end{topic}
