@@ -17,7 +17,7 @@
 %                                                                              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[landscape]{article}
+\documentclass[landscape, a4paper]{article}
 
 % Opening
 \title{}
@@ -26,7 +26,8 @@
 % Packages
 \usepackage{multicol}
 % Control the geometry of the page with 1/2 inch margins
-\usepackage[width = 10.5in, height = 8in]{geometry}
+%\usepackage[width = 10.5in, height = 8in]{geometry}
+\usepackage[width = 11in, height = 8in]{geometry}
 \usepackage{xspace}
 \usepackage{nicefrac}
 \usepackage{amsmath}
@@ -42,17 +43,32 @@
 \usepackage{changepage} % for the adjustwidth environment
 \usepackage{siunitx}    % For the num operator in producing scientific notation
 \usepackage{multicol}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=blue,
+    }
+
 
 % Fonts selection
 %\usepackage[osf]{kpfonts} % kpfonts is the default due to readability
 % \usepackage{ebgaramond}
 % \usepackage[regular, default]{sourcesanspro} % Very close to Myriad - favorite sans serif % option light,scale
-% \usepackage{alegreya}
+% \usepackage{Alegreya}
 % \usepackage[sfdefault]{universalis}
 % \usepackage{accanthis}
 % \usepackage{libertine}
+% \usepackage{notomath}
+% \usepackage{CrimsonPro}
+% \usepackage{cochineal}
 % \renewcommand{\familydefault}{\sfdefault}
 \usepackage{XCharter}
+\RequirePackage[xcharter,bigdelims,vvarbb]{newtxmath}
+%\usepackage{stix2}
+%\usepackage[nf]{coelacanth}
 
 % Use the following for the baskerville fonts ----
 % \usepackage{lmodern} % monospace font
@@ -105,7 +121,7 @@
 % ==============================================================================
 
 % For collapsing the lists to a single condensed itemized list
-\usepackage{enumitem}
+\usepackage[inline]{enumitem}
 \setlist{nosep} % or \setlist{noitemsep} to leave space around whole list
 
 % Setup a Lamport-style numbering scheme for proofs
@@ -119,6 +135,18 @@
 \setlist[cproof]{leftmargin=*, labelsep=5pt, itemindent=12pt}
 \newlist{lproof}{enumerate}{4}
 \setlist[lproof]{label*={\arabic*.}, leftmargin=*, itemindent=5pt}
+
+\newcommand{\argument}[1]{
+\begin{cproof}
+#1
+\end{cproof}
+}
+
+\newcommand{\proof}[1]{
+\begin{proofstep}
+#1
+\end{proofstep}
+}
 
 % proofstep is meant to be used in conjunction with lproof or cproof
 \newenvironment{proofstep}{
