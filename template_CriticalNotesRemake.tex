@@ -1,27 +1,31 @@
-\documentclass[10pt,letterpaper]{report}
-\usepackage[utf8]{inputenc}
+\documentclass[10pt, letterpaper]{report}
+
+% Math Packages
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{xspace}
-\usepackage{lmodern}
-\usepackage{geometry}
 \usepackage{nicefrac}
+
+% Typography enhancements
+\usepackage{xspace}
+\usepackage{geometry}
 \usepackage{multicol}
 \usepackage{microtype}
 \usepackage{booktabs}
 
-\usepackage[
-	%Bjornstrup
-	Lenny
-]{fncychap}
+% Chapter styling
+\usepackage[Lenny]{fncychap}
+% Other options: Bjornstrup, Sonny, Glenn, Conny, Rejne
 
+% Font selection
+\usepackage[oldstylenums]{kpfonts}
 %\usepackage{tgschola}
 %\usepackage{tgpagella}
 %\usepackage{fouriernc}
-\usepackage[oldstylenums]{kpfonts}
 
-%%%%%
+% =====================================
+% Document metadata
+% =====================================
 
 \title{Critical Notes and Review}
 \author{Mark Kurzeja}
@@ -29,12 +33,15 @@
 \renewcommand{\@chapapp}{Article}
 \makeatother
 
-%%%%%
+% =====================================
+% Custom Commands
+% =====================================
+
 \newcommand{\artical}[1]{\chapter{\textsc{#1}}}
 
 \newcommand{\notepage}[3]{
 	\section*{\textsc{#1}: #2}
-	\begin{description}	
+	\begin{description}
 		#3
 	\end{description}
 }
@@ -53,7 +60,7 @@
 	\end{enumerate}
 }
 
-\newcommand{\booktabs}[1]{
+\newcommand{\quicktable}[1]{
 	\begin{center}
 		\begin{tabular}
 			#1
@@ -65,7 +72,9 @@
 
 \newcommand{\ra}{\ensuremath{\Rightarrow}\xspace}
 
-%%%%%
+% =====================================
+% Begin Document
+% =====================================
 
 \begin{document}
 

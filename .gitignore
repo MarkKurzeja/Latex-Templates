@@ -1,9 +1,27 @@
-
+# LaTeX build artifacts
 *.aux
 *.log
-*.gz
 *.out
 *.toc
-*.gz(busy)
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+*.idx
+*.ilg
+*.ind
+
+# PDF output
 *.pdf
-*.pdf
+
+# Editor files
+*.swp
+*.swo
+*~
